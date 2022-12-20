@@ -9,8 +9,8 @@ flags = {
     "tightObject"    : "Probe_isTight",
 }
 
-baseOutDir = "results/SOS_Muon_2018/"
-
+inDir = "/eos/user/k/kpanos/www/SOS/LeptonSF_UL/Muons2018_FullDYMC"
+baseOutDir = inDir
 
 #############################################################
 ########## samples definition  - preparing the samples
@@ -37,7 +37,8 @@ if not samplesDef["mcAlt" ] is None: samplesDef["mcAlt" ].set_mcTruth()
 if not samplesDef["tagSel"] is None: samplesDef["tagSel"].set_mcTruth()
 
 # Set PU weight
-weightName = "puWeight"
+#weightName = "puWeight"
+weightName = "1.0"
 if not samplesDef["mcNom" ] is None: samplesDef["mcNom" ].set_weight(weightName)
 if not samplesDef["mcAlt" ] is None: samplesDef["mcAlt" ].set_weight(weightName)
 if not samplesDef["tagSel"] is None: samplesDef["tagSel"].set_weight(weightName)
@@ -72,8 +73,8 @@ tnpParNomFit = [
 ]
 
 tnpParDoublePeakNomFit = [
-    "meanP1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaP1[1.0,0.5,2.5]", "meanP2[90,20,100]", "sigmaPRatio[4,1.5,10]",
-    "meanF1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaF1[1.0,0.5,2.5]", "meanF2[90,20,100]", "sigmaFRatio[4,1.5,10]",
+    "meanP1[90,80,100]", "widthP[2.5,2.0,3.0]", "sigmaP1[1.0,0.5,2.5]", "meanP2[90,20,100]", "sigmaPRatio[4,1.5,10]",
+    "meanF1[90,80,100]", "widthF[2.5,2.0,3.0]", "sigmaF1[1.0,0.5,2.5]", "meanF2[90,20,100]", "sigmaFRatio[4,1.5,10]",
     "acmsP[60.,50.,75.]","betaP[0.04,0.01,0.06]","gammaP[0.1, 0.005, 1]","peakP[90.0]",
     "acmsF[60.,50.,75.]","betaF[0.04,0.01,0.06]","gammaF[0.1, 0.005, 1]","peakF[90.0]",
 
@@ -158,82 +159,82 @@ tnpParDoublePeakNomFit = [
 
 
     ####################### MC #####################
-    ### bin00
-    ###"meanP1[90,80,100]", "width[2.5,1.5,3.0]", "sigmaP1[1.0,0.5,1.5]", "meanP2[90,60,65]", "sigmaPRatio[4,1.5,10]",
-    ###"meanF1[90,80,100]", "width[2.5,1.5,3.0]", "sigmaF1[1.0,0.5,1.5]", "meanF2[90,20,100]", "sigmaFRatio[4,1.5,10]",
-    ### bin01
-    ###"meanP1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaP1[1.0,0.5,1.2]", "meanP2[90,20,100]", "sigmaPRatio[4,1.5,10]",
-    ###"meanF1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaF1[1.0,0.5,1.2]", "meanF2[90,20,100]", "sigmaFRatio[4,1.5,10]",
-    ### bin02
-    ###"meanP1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaP1[1.6,0.5,1.7]", "meanP2[90,68,72]", "sigmaPRatio[4,1.5,10]",
-    ###"meanF1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaF1[1.5,1.0,1.6]", "meanF2[90,20,100]", "sigmaFRatio[4,1.5,10]",
-    ### bin04
-    ###"meanP1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaP1[1.0,0.5,1.5]", "meanP2[90,20,100]", "sigmaPRatio[4,1.5,10]",
-    ###"meanF1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaF1[2,0.5,3]", "meanF2[90,20,100]", "sigmaFRatio[4,1.5,10]",
-    ### bin05
-    ###"meanP1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaP1[1.0,0.5,1.5]", "meanP2[90,20,100]", "sigmaPRatio[4,1.5,10]",
-    ###"meanF1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaF1[1.0,0.5,2.0]", "meanF2[90,20,100]", "sigmaFRatio[4,1.5,10]",
-    ### bin06
-    ###"meanP1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaP1[1.0,0.5,2.0]", "meanP2[90,20,100]", "sigmaPRatio[4,1.5,10]",
-    ###"meanF1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaF1[1.0,0.5,2.0]", "meanF2[90,20,100]", "sigmaFRatio[4,1.5,10]",
-    ### bin12
-    ###"meanP1[90,80,100]", "width[1.5,1.0,2.0]", "sigmaP1[0.7,0.5,1.1]", "meanP2[90,20,100]", "sigmaPRatio[4,1.5,10]",
-    ###"meanF1[90,80,100]", "width[1.5,1.0,2.0]", "sigmaF1[0.7,0.5,1.2]", "meanF2[94,90,93]", "sigmaFRatio[4,1.5,10]",
-    ### bin13
-    ###"meanP1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaP1[0.7,0.5,1.1]", "meanP2[90,20,100]", "sigmaPRatio[4,1.5,10]",
-    ###"meanF1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaF1[1.0,0.5,1.3]", "meanF2[90,20,100]", "sigmaFRatio[4,1.5,10]",
-    ### bin14
-    ###"meanP1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaP1[0.4,0.3,0.5]", "meanP2[90,20,100]", "sigmaPRatio[4,1.5,10]",
-    ###"meanF1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaF1[1.0,0.5,1.1]", "meanF2[90,20,100]", "sigmaFRatio[4,1.5,10]",
-    ### bin15
-    ###"meanP1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaP1[0.7,0.3,1.1]", "meanP2[90,20,100]", "sigmaPRatio[4,1.5,10]",
-    ###"meanF1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaF1[1.0,0.5,1.3]", "meanF2[90,20,100]", "sigmaFRatio[4,1.5,10]",
-    ### bin16
-    ###"meanP1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaP1[0.5,0.3,0.7]", "meanP2[90,20,100]", "sigmaPRatio[4,1.5,10]",
-    ###"meanF1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaF1[0.6,0.5,0.9]", "meanF2[90,20,100]", "sigmaFRatio[4,1.5,10]",
-    ### bin17
-    ###"meanP1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaP1[0.5,0.3,1.3]", "meanP2[90,20,100]", "sigmaPRatio[4,1.5,10]",
-    ###"meanF1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaF1[0.6,0.5,1.15]", "meanF2[90,20,100]", "sigmaFRatio[4,1.5,10]",
-    ### bin18
-    ###"meanP1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaP1[0.5,0.3,0.9]", "meanP2[90,20,100]", "sigmaPRatio[4,1.5,10]",
-    ###"meanF1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaF1[0.6,0.5,1.15]", "meanF2[90,20,100]", "sigmaFRatio[4,1.5,10]",
-    ### bin19
-    ###"meanP1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaP1[0.5,0.3,1.4]", "meanP2[90,20,100]", "sigmaPRatio[4,1.5,10]",
-    ###"meanF1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaF1[0.6,0.5,2.0]", "meanF2[90,20,100]", "sigmaFRatio[4,1.5,10]",
+    # bin00
+    #"meanP1[90,80,100]", "width[2.5,1.5,3.0]", "sigmaP1[1.0,0.5,1.5]", "meanP2[90,60,65]", "sigmaPRatio[4,1.5,10]",
+    #"meanF1[90,80,100]", "width[2.5,1.5,3.0]", "sigmaF1[1.0,0.5,1.5]", "meanF2[90,20,100]", "sigmaFRatio[4,1.5,10]",
+    # bin01
+    #"meanP1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaP1[1.0,0.5,1.2]", "meanP2[90,20,100]", "sigmaPRatio[4,1.5,10]",
+    #"meanF1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaF1[1.0,0.5,1.2]", "meanF2[90,20,100]", "sigmaFRatio[4,1.5,10]",
+    # bin02
+    #"meanP1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaP1[1.6,0.5,1.7]", "meanP2[90,68,72]", "sigmaPRatio[4,1.5,10]",
+    #"meanF1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaF1[1.5,1.0,1.6]", "meanF2[90,20,100]", "sigmaFRatio[4,1.5,10]",
+    # bin04
+    #"meanP1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaP1[1.0,0.5,1.5]", "meanP2[90,20,100]", "sigmaPRatio[4,1.5,10]",
+    #"meanF1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaF1[2,0.5,3]", "meanF2[90,20,100]", "sigmaFRatio[4,1.5,10]",
+    # bin05
+    #"meanP1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaP1[1.0,0.5,1.5]", "meanP2[90,20,100]", "sigmaPRatio[4,1.5,10]",
+    #"meanF1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaF1[1.0,0.5,2.0]", "meanF2[90,20,100]", "sigmaFRatio[4,1.5,10]",
+    # bin06
+    #"meanP1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaP1[1.0,0.5,2.0]", "meanP2[90,20,100]", "sigmaPRatio[4,1.5,10]",
+    #"meanF1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaF1[1.0,0.5,2.0]", "meanF2[90,20,100]", "sigmaFRatio[4,1.5,10]",
+    # bin12
+    #"meanP1[90,80,100]", "width[1.5,1.0,2.0]", "sigmaP1[0.7,0.5,1.1]", "meanP2[90,20,100]", "sigmaPRatio[4,1.5,10]",
+    #"meanF1[90,80,100]", "width[1.5,1.0,2.0]", "sigmaF1[0.7,0.5,1.2]", "meanF2[94,90,93]", "sigmaFRatio[4,1.5,10]",
+    # bin13
+    #"meanP1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaP1[0.7,0.5,1.1]", "meanP2[90,20,100]", "sigmaPRatio[4,1.5,10]",
+    #"meanF1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaF1[1.0,0.5,1.3]", "meanF2[90,20,100]", "sigmaFRatio[4,1.5,10]",
+    # bin14
+    #"meanP1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaP1[0.4,0.3,0.5]", "meanP2[90,20,100]", "sigmaPRatio[4,1.5,10]",
+    #"meanF1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaF1[1.0,0.5,1.1]", "meanF2[90,20,100]", "sigmaFRatio[4,1.5,10]",
+    # bin15
+    #"meanP1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaP1[0.7,0.3,1.1]", "meanP2[90,20,100]", "sigmaPRatio[4,1.5,10]",
+    #"meanF1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaF1[1.0,0.5,1.3]", "meanF2[90,20,100]", "sigmaFRatio[4,1.5,10]",
+    # bin16
+    #"meanP1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaP1[0.5,0.3,0.7]", "meanP2[90,20,100]", "sigmaPRatio[4,1.5,10]",
+    #"meanF1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaF1[0.6,0.5,0.9]", "meanF2[90,20,100]", "sigmaFRatio[4,1.5,10]",
+    # bin17
+    #"meanP1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaP1[0.5,0.3,1.3]", "meanP2[90,20,100]", "sigmaPRatio[4,1.5,10]",
+    #"meanF1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaF1[0.6,0.5,1.15]", "meanF2[90,20,100]", "sigmaFRatio[4,1.5,10]",
+    # bin18
+    #"meanP1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaP1[0.5,0.3,0.9]", "meanP2[90,20,100]", "sigmaPRatio[4,1.5,10]",
+    #"meanF1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaF1[0.6,0.5,1.15]", "meanF2[90,20,100]", "sigmaFRatio[4,1.5,10]",
+    # bin19
+    #"meanP1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaP1[0.5,0.3,1.4]", "meanP2[90,20,100]", "sigmaPRatio[4,1.5,10]",
+    #"meanF1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaF1[0.6,0.5,2.0]", "meanF2[90,20,100]", "sigmaFRatio[4,1.5,10]",
 
     ####################### DATA #####################
-    ### bin00
-    ###"meanP1[90,80,100]", "width[2.5,1.5,3.0]", "sigmaP1[1.0,0.5,1.5]", "meanP2[90,60,65]", "sigmaPRatio[4,1.5,10]",
-    ###"meanF1[90,80,100]", "width[2.5,1.5,3.0]", "sigmaF1[1.0,0.5,1.5]", "meanF2[90,20,100]", "sigmaFRatio[4,1.5,10]",
-    ### bin02, bin03, bin04
-    ###"meanP1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaP1[1.0,0.3,0.6]", "meanP2[90,20,100]", "sigmaPRatio[4,1.5,10]",
-    ###"meanF1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaF1[1.0,0.5,2.5]", "meanF2[90,20,100]", "sigmaFRatio[4,1.5,10]",
-    ### bin05
-    ###"meanP1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaP1[0.7,0.5,1.0]", "meanP2[90,20,100]", "sigmaPRatio[4,1.5,10]",
-    ###"meanF1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaF1[1.0,0.5,2.5]", "meanF2[90,20,100]", "sigmaFRatio[4,1.5,10]",
-    ### bin06
-    ###"meanP1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaP1[0.7,0.3,0.8]", "meanP2[90,20,100]", "sigmaPRatio[4,1.5,10]",
-    ###"meanF1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaF1[2.0,0.5,2.5]", "meanF2[90,20,100]", "sigmaFRatio[4,1.5,10]",
-    ### bin07
-    ###"meanP1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaP1[0.2,0.1,0.4]", "meanP2[80,20,100]", "sigmaPRatio[4,1.5,10]",
-    ###"meanF1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaF1[1.0,0.5,1.4]", "meanF2[90,60,100]", "sigmaFRatio[3,2.0,5.0]",
-    ###"acmsP[60.,50.,75.]","betaP[0.04,0.01,0.06]","gammaP[0.1, 0.005, 1]","peakP[90.0]",
-    ###"acmsF[60.,50.,75.]","betaF[0.01]","gammaF[0.1, 0.005, 1]","peakF[90.0]",
-    ### bin09
-    ###"meanP1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaP1[1.0,0.5,1.5]", "meanP2[90,20,100]", "sigmaPRatio[4,1.5,10]",
-    ###"meanF1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaF1[1.0,0.5,2.5]", "meanF2[90,20,100]", "sigmaFRatio[4,1.5,10]",
-    ### bin13
-    ###"meanP1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaP1[1.0,0.5,1.75]", "meanP2[90,20,100]", "sigmaPRatio[4,1.5,10]",
-    ###"meanF1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaF1[1.0,0.5,2.5]", "meanF2[90,20,100]", "sigmaFRatio[4,1.5,10]",
-    ### bin15
-    ###"meanP1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaP1[1.0,0.5,1.8]", "meanP2[90,20,100]", "sigmaPRatio[4,1.5,10]",
-    ###"meanF1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaF1[1.0,0.5,2.5]", "meanF2[90]", "sigmaFRatio[4,1.5,10]",
-    ### bin17
-    ###"meanP1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaP1[1.0,0.5,2.5]", "meanP2[90,20,100]", "sigmaPRatio[4,1.5,10]",
-    ###"meanF1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaF1[1.0,0.5,2.5]", "meanF2[90]", "sigmaFRatio[4,1.5,10]",
-    ### bin19
-    ###"meanP1[90,80,100]", "width[3.0]", "sigmaP1[1.0,0.5,1.4]", "meanP2[90,20,100]", "sigmaPRatio[4,1.5,10]",
-    ###"meanF1[90,80,100]", "width[3.0]", "sigmaF1[2.5,2.0,3.5]", "meanF2[90]", "sigmaFRatio[6,5.0,10]",
+    # bin00
+    #"meanP1[90,80,100]", "width[2.5,1.5,3.0]", "sigmaP1[1.0,0.5,1.5]", "meanP2[90,60,65]", "sigmaPRatio[4,1.5,10]",
+    #"meanF1[90,80,100]", "width[2.5,1.5,3.0]", "sigmaF1[1.0,0.5,1.5]", "meanF2[90,20,100]", "sigmaFRatio[4,1.5,10]",
+    # bin02, bin03, bin04
+    #"meanP1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaP1[1.0,0.3,0.6]", "meanP2[90,20,100]", "sigmaPRatio[4,1.5,10]",
+    #"meanF1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaF1[1.0,0.5,2.5]", "meanF2[90,20,100]", "sigmaFRatio[4,1.5,10]",
+    # bin05
+    #"meanP1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaP1[0.7,0.5,1.0]", "meanP2[90,20,100]", "sigmaPRatio[4,1.5,10]",
+    #"meanF1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaF1[1.0,0.5,2.5]", "meanF2[90,20,100]", "sigmaFRatio[4,1.5,10]",
+    # bin06
+    #"meanP1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaP1[0.7,0.3,0.8]", "meanP2[90,20,100]", "sigmaPRatio[4,1.5,10]",
+    #"meanF1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaF1[2.0,0.5,2.5]", "meanF2[90,20,100]", "sigmaFRatio[4,1.5,10]",
+    # bin07
+    #"meanP1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaP1[0.2,0.1,0.4]", "meanP2[80,20,100]", "sigmaPRatio[4,1.5,10]",
+    #"meanF1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaF1[1.0,0.5,1.4]", "meanF2[90,60,100]", "sigmaFRatio[3,2.0,5.0]",
+    #"acmsP[60.,50.,75.]","betaP[0.04,0.01,0.06]","gammaP[0.1, 0.005, 1]","peakP[90.0]",
+    #"acmsF[60.,50.,75.]","betaF[0.01]","gammaF[0.1, 0.005, 1]","peakF[90.0]",
+    # bin09
+    #"meanP1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaP1[1.0,0.5,1.5]", "meanP2[90,20,100]", "sigmaPRatio[4,1.5,10]",
+    #"meanF1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaF1[1.0,0.5,2.5]", "meanF2[90,20,100]", "sigmaFRatio[4,1.5,10]",
+    # bin13
+    #"meanP1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaP1[1.0,0.5,1.75]", "meanP2[90,20,100]", "sigmaPRatio[4,1.5,10]",
+    #"meanF1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaF1[1.0,0.5,2.5]", "meanF2[90,20,100]", "sigmaFRatio[4,1.5,10]",
+    # bin15
+    #"meanP1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaP1[1.0,0.5,1.8]", "meanP2[90,20,100]", "sigmaPRatio[4,1.5,10]",
+    #"meanF1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaF1[1.0,0.5,2.5]", "meanF2[90]", "sigmaFRatio[4,1.5,10]",
+    # bin17
+    #"meanP1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaP1[1.0,0.5,2.5]", "meanP2[90,20,100]", "sigmaPRatio[4,1.5,10]",
+    #"meanF1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaF1[1.0,0.5,2.5]", "meanF2[90]", "sigmaFRatio[4,1.5,10]",
+    # bin19
+    #"meanP1[90,80,100]", "width[3.0]", "sigmaP1[1.0,0.5,1.4]", "meanP2[90,20,100]", "sigmaPRatio[4,1.5,10]",
+    #"meanF1[90,80,100]", "width[3.0]", "sigmaF1[2.5,2.0,3.5]", "meanF2[90]", "sigmaFRatio[6,5.0,10]",
 ]
 
 tnpParAltSigFit = [
@@ -281,8 +282,8 @@ tnpParAltBkgFit = [
 ]
      
 tnpParDoublePeakAltBkgFit = [
-    "meanP1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaP1[1.0,0.5,2.5]", "meanP2[90,20,100]", "sigmaPRatio[4,1.5,10]",
-    "meanF1[90,80,100]", "width[2.5,2.0,3.0]", "sigmaF1[1.0,0.5,2.5]", "meanF2[90,20,100]", "sigmaFRatio[4,1.5,10]",
+    "meanP1[90,80,100]", "widthP[2.5,2.0,3.0]", "sigmaP1[1.0,0.5,2.5]", "meanP2[90,20,100]", "sigmaPRatio[4,1.5,10]",
+    "meanF1[90,80,100]", "widthF[2.5,2.0,3.0]", "sigmaF1[1.0,0.5,2.5]", "meanF2[90,20,100]", "sigmaFRatio[4,1.5,10]",
     "alphaP[0.,-5.,5.]",
     "alphaF[0.,-5.,5.]",
 
@@ -331,7 +332,7 @@ tnpParDoublePeakAltBkgFit = [
     # bin14
     #"meanP1[90,80,100]", "width[2.0]", "sigmaP1[1.0,0.5,2.5]", "meanP2[90,20,100]", "sigmaPRatio[4,1.5,10]",
     #"meanF1[90,80,100]", "width[2.0]", "sigmaF1[1.0,0.5,2.5]", "meanF2[90,20,100]", "sigmaFRatio[4,1.5,10]",
-	# bin16
+    # bin16
     #"meanP1[90,80,100]", "width[3.0]", "sigmaP1[1.0]", "meanP2[90,20,100]", "sigmaPRatio[4,1.5,10]",
     #"meanF1[90,80,100]", "width[3.0]", "sigmaF1[1.0,0.5,2.5]", "meanF2[90,20,100]", "sigmaFRatio[4,1.5,10]",
     # bin19

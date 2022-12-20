@@ -1,6 +1,7 @@
 import ROOT as rt
 import math
 from fitUtils import *
+from ctypes import c_double as Double
 #from fitSimultaneousUtils import *
 
 
@@ -34,10 +35,11 @@ def getAllEffi( info, bindef ):
         hF = rootfile.Get('%s_Fail'%bindef['name'])
         bin1 = 1
         bin2 = hP.GetXaxis().GetNbins()
-        eP = rt.Double(-1.0)
-        eF = rt.Double(-1.0)
+        eP = Double(-1.0)
+        eF = Double(-1.0)
         nP = hP.IntegralAndError(bin1,bin2,eP)
         nF = hF.IntegralAndError(bin1,bin2,eF)
+        eP, eF = eP.value, eF.value
 
         effis['mcNominal'] = computeEffi(nP,nF,eP,eF)
         rootfile.Close()
@@ -49,10 +51,11 @@ def getAllEffi( info, bindef ):
         hF = rootfile.Get('%s_Fail'%bindef['name'])
         bin1 = 1
         bin2 = hP.GetXaxis().GetNbins()
-        eP = rt.Double(-1.0)
-        eF = rt.Double(-1.0)
+        eP = Double(-1.0)
+        eF = Double(-1.0)
         nP = hP.IntegralAndError(bin1,bin2,eP)
         nF = hF.IntegralAndError(bin1,bin2,eF)
+        eP, eF = eP.value, eF.value
 
         effis['tagSel'] = computeEffi(nP,nF,eP,eF)
         rootfile.Close()
@@ -64,10 +67,11 @@ def getAllEffi( info, bindef ):
         hF = rootfile.Get('%s_Fail'%bindef['name'])
         bin1 = 1
         bin2 = hP.GetXaxis().GetNbins()
-        eP = rt.Double(-1.0)
-        eF = rt.Double(-1.0)
+        eP = Double(-1.0)
+        eF = Double(-1.0)
         nP = hP.IntegralAndError(bin1,bin2,eP)
         nF = hF.IntegralAndError(bin1,bin2,eF)
+        eP, eF = eP.value, eF.value
 
         effis['mcAlt'] = computeEffi(nP,nF,eP,eF)
         rootfile.Close()

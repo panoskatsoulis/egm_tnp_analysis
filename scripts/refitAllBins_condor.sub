@@ -1,0 +1,107 @@
+Universe     = vanilla
+JobBatchName = Refitting_Recursively
+Executable   = recursiveRefit.py
+Log          = batch_logs/condor_job_$(ClusterId)_$(ProcId).log
+Output       = batch_logs/condor_job_$(ClusterId)_$(ProcId).out
+Error        = batch_logs/condor_job_$(ClusterId)_$(ProcId).err
+getenv       = True
+## runtime by flavour
+## espresso     = 20 minutes
+## microcentury = 1 hour
+## longlunch    = 2 hours
+## workday      = 8 hours
+## tomorrow     = 1 day
+## testmatch    = 3 days
+## nextweek     = 1 week
++JobFlavour = "longlunch"
+#+JobFlavour = "workday"
+#+JobFlavour = "espresso"
+## runtime in secs
+#+MaxRuntime  = 144000
+
+#arguments    = -bin $(bin) -input /eos/user/k/kpanos/www/SOS/LeptonSF_UL/Muons2018_pythoncondor -fitsetup $(setup) -test
+#arguments    = -bin $(bin) -input /eos/user/k/kpanos/www/SOS/LeptonSF_UL/Muons2018_fullrun -fitsetup $(setup)
+arguments    = -bin $(bin) -input /eos/user/k/kpanos/www/SOS/LeptonSF_UL/Muons2018_FullDYMC -fitsetup $(setup)
+
+queue bin, setup from (
+# 00, nominal
+# 01, nominal
+# 02, nominal
+# 03, nominal
+# 04, nominal
+# 05, nominal
+# 06, nominal
+# 07, nominal
+# 08, nominal
+# 09, nominal
+# 10, nominal
+# 11, nominal
+# 12, nominal
+# 13, nominal
+# 14, nominal
+# 15, nominal
+# 16, nominal
+# 17, nominal
+# 18, nominal
+# 19, nominal
+# 00, altsig
+# 01, altsig
+# 02, altsig
+# 03, altsig
+# 04, altsig
+# 05, altsig
+# 06, altsig
+# 07, altsig
+# 08, altsig
+# 09, altsig
+# 10, altsig
+# 11, altsig
+# 12, altsig
+# 13, altsig
+# 14, altsig
+# 15, altsig
+# 16, altsig
+# 17, altsig
+# 18, altsig
+# 19, altsig
+# 00, altbkg
+# 01, altbkg
+# 02, altbkg
+# 03, altbkg
+# 04, altbkg
+# 05, altbkg
+# 06, altbkg
+# 07, altbkg
+# 08, altbkg
+# 09, altbkg
+# 10, altbkg
+# 11, altbkg
+# 12, altbkg
+# 13, altbkg
+# 14, altbkg
+# 15, altbkg
+# 16, altbkg
+# 17, altbkg
+# 18, altbkg
+# 19, altbkg
+00, mc
+#01, mc
+02, mc
+#03, mc
+04, mc
+#05, mc
+#06, mc
+#07, mc
+#08, mc
+#09, mc
+#10, mc
+#11, mc
+#12, mc
+13, mc
+#14, mc
+#15, mc
+16, mc
+17, mc
+#18, mc
+#19, mc
+)

@@ -47,10 +47,11 @@ if not args.flag in tnpConf.flags.keys() :
     print tnpConf.flags.keys()
     sys.exit(1)
 
-outputDirectory = '%s/%s/' % (tnpConf.baseOutDir,args.flag)
+inputDirectory  = '%s/%s/' % (tnpConf.inDir, args.flag)
+outputDirectory = tnpConf.baseOutDir
 
 print '===>  Output directory: '
-print outputDirectory
+print inputDirectory
 
 
 ####################################################################
@@ -65,18 +66,18 @@ if args.checkBins:
     sys.exit(0)
     
 if args.createBins:
-    if os.path.exists( outputDirectory ):
-            shutil.rmtree( outputDirectory )
-    os.makedirs( outputDirectory )
+    if os.path.exists( inputDirectory ):
+            shutil.rmtree( inputDirectory )
+    os.makedirs( inputDirectory )
     tnpBins = tnpBiner.createBins(tnpConf.biningDef,tnpConf.cutBase)
     tnpBiner.tuneCuts( tnpBins, tnpConf.additionalCuts )
-    pickle.dump( tnpBins, open( '%s/bining.pkl'%(outputDirectory),'wb') )
-    print 'created dir: %s ' % outputDirectory
+    pickle.dump( tnpBins, open( '%s/bining.pkl'%(inputDirectory),'wb') )
+    print 'created dir: %s ' % inputDirectory
     print 'bining created successfully... '
-    print 'Note than any additional call to createBins will overwrite directory %s' % outputDirectory
+    print 'Note than any additional call to createBins will overwrite directory %s' % inputDirectory
     sys.exit(0)
 
-tnpBins = pickle.load( open( '%s/bining.pkl'%(outputDirectory),'rb') )
+tnpBins = pickle.load( open( '%s/bining.pkl'%(inputDirectory),'rb') )
 
 
 ####################################################################
@@ -86,7 +87,7 @@ for s in tnpConf.samplesDef.keys():
     sample =  tnpConf.samplesDef[s]
     if sample is None: continue
     setattr( sample, 'tree'     ,'Events' ) # %s/tnpEGM_fitter.py:
-    setattr( sample, 'histFile' , '%s/%s_%s.root' % ( outputDirectory , sample.name, args.flag ) )
+    setattr( sample, 'histFile' , '%s/%s_%s.root' % ( inputDirectory , sample.name, args.flag ) )
 
 
 if args.createHists:

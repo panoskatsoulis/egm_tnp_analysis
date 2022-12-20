@@ -1,7 +1,7 @@
 import ROOT as rt
-rt.gROOT.LoadMacro('./libCpp/histFitter.C+')
-rt.gROOT.LoadMacro('./libCpp/RooCBExGaussShape.cc+')
-rt.gROOT.LoadMacro('./libCpp/RooCMSShape.cc+')
+rt.gROOT.LoadMacro('./libCpp/histFitter.C')
+rt.gROOT.LoadMacro('./libCpp/RooCBExGaussShape.cc')
+rt.gROOT.LoadMacro('./libCpp/RooCMSShape.cc')
 rt.gROOT.SetBatch(1)
 
 from ROOT import tnpFitter
@@ -249,10 +249,10 @@ def histFitterAltBkg( sample, tnpBin, tnpWorkspaceParam ):
 def histFitterDoublePeakNominal( sample, tnpBin, tnpWorkspaceParam ):
         
     tnpWorkspaceFunc = [
-        "Voigtian::sigResPass1(x, meanP1, width, sigmaP1)",
-        "Voigtian::sigResPass2(x, meanP2, width, prod::sigmaP2(sigmaP1, sigmaPRatio))",
-        "Voigtian::sigResFail1(x, meanF1, width, sigmaF1)",
-        "Voigtian::sigResFail2(x, meanF2, width, prod::sigmaF2(sigmaF1, sigmaFRatio))",
+        "Voigtian::sigResPass1(x, meanP1, widthP, sigmaP1)",
+        "Voigtian::sigResPass2(x, meanP2, widthP, prod::sigmaP2(sigmaP1, sigmaPRatio))",
+        "Voigtian::sigResFail1(x, meanF1, widthF, sigmaF1)",
+        "Voigtian::sigResFail2(x, meanF2, widthF, prod::sigmaF2(sigmaF1, sigmaFRatio))",
         "RooCMSShape::bkgPass(x, acmsP, betaP, gammaP, peakP)",
         "RooCMSShape::bkgFail(x, acmsF, betaF, gammaF, peakF)",
         ]
@@ -337,10 +337,10 @@ def histFitterDoublePeakAltSig( sample, tnpBin, tnpWorkspaceParam ):
 def histFitterDoublePeakAltBkg( sample, tnpBin, tnpWorkspaceParam ):
         
     tnpWorkspaceFunc = [
-        "Voigtian::sigResPass1(x, meanP1, width, sigmaP1)",
-        "Voigtian::sigResPass2(x, meanP2, width, prod::sigmaP2(sigmaP1, sigmaPRatio))",
-        "Voigtian::sigResFail1(x, meanF1, width, sigmaF1)",
-        "Voigtian::sigResFail2(x, meanF2, width, prod::sigmaF2(sigmaF1, sigmaFRatio))",
+        "Voigtian::sigResPass1(x, meanP1, widthP, sigmaP1)",
+        "Voigtian::sigResPass2(x, meanP2, widthP, prod::sigmaP2(sigmaP1, sigmaPRatio))",
+        "Voigtian::sigResFail1(x, meanF1, widthF, sigmaF1)",
+        "Voigtian::sigResFail2(x, meanF2, widthF, prod::sigmaF2(sigmaF1, sigmaFRatio))",
         "Exponential::bkgPass(x, alphaP)",
         "Exponential::bkgFail(x, alphaF)",
         ]

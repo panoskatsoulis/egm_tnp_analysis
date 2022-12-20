@@ -14,6 +14,7 @@
 #include "RooCBExGaussShape.h"
 #include "RooCMSShape.h"
 
+#include <ostream>
 #include <vector>
 #include <string>
 #ifdef __CINT__
@@ -169,8 +170,14 @@ void tnpFitter::fits(bool mcTruth,string title) {
   /// FC: I don't know why but the integral is done over the full range in the fit not on the reduced range
   _work->var("x")->setRange(_xFitMin,_xFitMax);
   _work->var("x")->setRange("fitMassRange",_xFitMin,_xFitMax);
+
   RooFitResult* resPass = pdfPass->fitTo(*_work->data("hPass"),Minos(_useMinos),SumW2Error(kTRUE),Save(),Range("fitMassRange"));
   //RooFitResult* resPass = pdfPass->fitTo(*_work->data("hPass"),Minos(_useMinos),SumW2Error(kTRUE),Save());
+  std::cerr << "==============================================================================" << std::endl;
+  std::cerr << "=========================== >> PASSED PROBES << ==============================" << std::endl;
+  std::cerr << " EDM=" << resPass->edm() << "  -log(L)=" << resPass->minNll() << std::endl;
+  std::cerr << "==============================================================================" << std::endl;
+
   if( _fixSigmaFtoSigmaP ) {
     _work->var("sigmaF")->setVal( _work->var("sigmaP")->getVal() );
     _work->var("sigmaF")->setConstant();
@@ -182,7 +189,10 @@ void tnpFitter::fits(bool mcTruth,string title) {
   }
   RooFitResult* resFail = pdfFail->fitTo(*_work->data("hFail"),Minos(_useMinos),SumW2Error(kTRUE),Save(),Range("fitMassRange"));
   //RooFitResult* resFail = pdfFail->fitTo(*_work->data("hFail"),Minos(_useMinos),SumW2Error(kTRUE),Save());
-
+  std::cerr << "==============================================================================" << std::endl;
+  std::cerr << "=========================== >> FAILED PROBES << ==============================" << std::endl;
+  std::cerr << " EDM=" << resFail->edm() << "  -log(L)=" << resFail->minNll() << std::endl;
+  std::cerr << "==============================================================================" << std::endl;
 
   RooPlot *pPass = _work->var("x")->frame(60,120);
   RooPlot *pFail = _work->var("x")->frame(60,120);
